@@ -43,25 +43,20 @@
                                 <rect key="frame" x="0.0" y="116" width="375" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="scrollIndicatorInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="5" id="NhZ-Op-hwk">
-                                    <size key="itemSize" width="346" height="347"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
-                                </collectionViewFlowLayout>
+                                <collectionViewLayout key="collectionViewLayout" id="Ldb-3x-qlY" customClass="PinterestLayout" customModule="Do_Pinterest" customModuleProvider="target"/>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="R96-9q-Rr4" customClass="PhotoCell" customModule="Do_Pinterest" customModuleProvider="target">
-                                        <rect key="frame" x="14.5" y="10" width="346" height="347"/>
+                                        <rect key="frame" x="3" y="0.0" width="369" height="416"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="346" height="347"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="369" height="416"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4sg-D1-dRa">
                                                     <rect key="frame" x="60" y="51" width="280" height="168"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="eoR-D1-0SA">
-                                                            <rect key="frame" x="0.0" y="0.0" width="346" height="347"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="369" height="416"/>
                                                         </imageView>
                                                     </subviews>
                                                 </stackView>
@@ -73,6 +68,7 @@
                                             <constraint firstAttribute="bottom" secondItem="4sg-D1-dRa" secondAttribute="bottom" id="Q6z-wq-4Vp"/>
                                             <constraint firstAttribute="trailing" secondItem="4sg-D1-dRa" secondAttribute="trailing" id="hRb-9E-Ajg"/>
                                         </constraints>
+                                        <size key="customSize" width="369" height="416"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="10"/>

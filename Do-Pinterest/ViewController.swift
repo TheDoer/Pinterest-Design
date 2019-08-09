@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     
     //MARK: Properties
     
-    let images = [#imageLiteral(resourceName: "image-4"),#imageLiteral(resourceName: "image-2"),#imageLiteral(resourceName: "image-1"),#imageLiteral(resourceName: "image-3"),#imageLiteral(resourceName: "image-5")]
+    let images = [#imageLiteral(resourceName: "image-4"),#imageLiteral(resourceName: "image-2"),#imageLiteral(resourceName: "image-1"),#imageLiteral(resourceName: "image-3"),#imageLiteral(resourceName: "image-5"),#imageLiteral(resourceName: "image-6"),#imageLiteral(resourceName: "image-7"),#imageLiteral(resourceName: "image-8")]
     
     
     override func viewDidLoad() {
@@ -25,27 +25,45 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
        // view.backgroundColor = .white
+        if let layout = collectionView.collectionViewLayout as? PinterestLayout {
+            layout.delegate = self
+        }
+        collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        
+        
     }
 
 }
 
 //MARK: FLow Layout Delegate
 
-extension ViewController: UICollectionViewDelegateFlowLayout{
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) ->
-        CGSize {
-            
-            let numberOfColums:CGFloat = 2
-            let width = collectionView.frame.size.width
-            let xInserts:CGFloat = 10
-            let cellSpacing:CGFloat = 5
+//extension ViewController: UICollectionViewDelegateFlowLayout{
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) ->
+//        CGSize {
+//
+//            let numberOfColums:CGFloat = 2
+//            let width = collectionView.frame.size.width
+//            let xInserts:CGFloat = 10
+//            let cellSpacing:CGFloat = 5
+//            let image = images[indexPath.item]
+//            let height = image.size.height
+//
+//
+//        return CGSize(width: (width / numberOfColums) - (xInserts + cellSpacing), height: height)
+//    }
+//}
+
+
+extension ViewController: PinterestLayoutDelegate{
+    func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
         
+        let image = images[indexPath.item]
+        let height = image.size.height
         
-        return CGSize(width: (width / numberOfColums) - (xInserts + cellSpacing), height: (width / numberOfColums) - (xInserts + cellSpacing))
+        return height
     }
+   
 }
-
-
 
 //MARK: Data Source
 
