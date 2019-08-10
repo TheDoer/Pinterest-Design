@@ -9,9 +9,23 @@
 import Foundation
 
 protocol Endpoint {
-    var baseURL: String { get }
+    var baseUrl: String { get }
     var path: String { get }
     var urlParameters: [URLQueryItem] { get }
+}
+
+extension Endpoint {
+    var urlComponent: URLComponents {
+        var urlComponent = URLComponents(string: baseUrl)
+        urlComponent?.path = path
+        urlComponent?.queryItems = urlParameters
+        
+        return urlComponent!
+    }
+    
+    var request: URLRequest {
+        return URLRequest(url: urlComponent.url!)
+    }
 }
 
 enum Order: String {
@@ -22,7 +36,7 @@ enum UnspashEndpoint: Endpoint {
     case photos(id: String, order: Order)
     
     var baseUrl: String {
-        return "https://api.unsplash.com"
+        return UnsplashClient.baseUrl
     }
     
     var path: String {
@@ -42,5 +56,6 @@ enum UnspashEndpoint: Endpoint {
         }
     }
 }
+
 
 
