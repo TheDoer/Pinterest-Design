@@ -8,47 +8,40 @@
 
 import UIKit
 
-struct cellViewModel {
+struct CellViewModel {
     let image: UIImage
 }
 
 class ViewModel {
-    
-    //MARK: Properies
+    // MARK: Properties
     
     private let client: APIClient
     private var photos: Photos = [] {
-        
-        didSet{
+        didSet {
             self.fetchPhoto()
         }
     }
-    var cellViewModels: [cellViewModel] = []
+    var cellViewModels: [CellViewModel] = []
     
+    // MARK: UI
     
-    //MARK: UI
-    
-    var isloading: Bool = false {
+    var isLoading: Bool = false {
         didSet {
             showLoading?()
-            
         }
     }
-    
-    //Closures
-    
     var showLoading: (() -> Void)?
     var reloadData: (() -> Void)?
     var showError: ((Error) -> Void)?
     
-    init(client : APIClient) {
-            self.client = client
+    init(client: APIClient) {
+        self.client = client
     }
     
     func fetchPhotos() {
         if let client = client as? UnsplashClient {
-            self.isloading = true
-            let endpoint = UnspashEndpoint.photos(id: UnsplashClient.apiKey, order: .popular)
+            self.isLoading = true
+            let endpoint = UnspashEndpoint.photos(id: UnsplashClient.apiKey, order: .latest)
             client.fetch(with: endpoint) { (either) in
                 switch either {
                 case .success(let photos):
@@ -57,43 +50,34 @@ class ViewModel {
                     self.showError?(error)
                 }
             }
-            }
         }
+    }
     
     private func fetchPhoto() {
-        
-        //Warning: This is happening on the main thread, this may lock up the UI and gives poor experience.
-        
         let group = DispatchGroup()
-        
         self.photos.forEach { (photo) in
-            
-            //This will run asynchrous request
-            DispatchQueue.global(qos: .background).async(group: group){
-                
+            DispatchQueue.global(qos: .background).async(group: group) {
                 group.enter()
-                    guard (try? Data(contentsOf: URL(string: "")!)) != nil else {
-                        self.showError?(APIError.unknown)
-                        return
-                        
-                    }
-                    guard let image = UIImage(data: Data) else {
-                        self.showError?(APIError.unknown)
-                        return
-                    }
+                guard let imageData = try? Data(contentsOf: photo.urls.small) else {
+                    self.showError?(APIError.imageDownload)
+                    return
+                }
                 
-                    //When it finish looping it will be appending to this
+                guard let image = UIImage(data: imageData) else {
+                    self.showError?(APIError.imageConvert)
+                    return
+                }
                 
-                    self.cellViewModels.append(cellViewModels(image: image))
-                    group.leave()
-                    }
+                self.cellViewModels.append(CellViewModel(image: image))
+                group.leave()
+            }
         }
-        group.notify(queue: main){
-            self.isloading = false
+        
+        group.notify(queue: .main) {
+            self.isLoading = false
             self.reloadData?()
         }
     }
     
-
-    }
-
+    
+}
