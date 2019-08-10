@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		F12274D822FDA9CC00173287 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12274D722FDA9CC00173287 /* APIClient.swift */; };
-		F12274DA22FDABB700173287 /* UnplashImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12274D922FDABB700173287 /* UnplashImages.swift */; };
 		F12274DC22FDBE9B00173287 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12274DB22FDBE9B00173287 /* Endpoint.swift */; };
+		F13CAB4622FE338D00733142 /* UnsplashClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CAB4522FE338D00733142 /* UnsplashClient.swift */; };
+		F13CAB4822FEC3D300733142 /* UnsplashImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CAB4722FEC3D300733142 /* UnsplashImages.swift */; };
 		F1BF362122FC52FB0005EAF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BF362022FC52FB0005EAF8 /* AppDelegate.swift */; };
 		F1BF362322FC52FB0005EAF8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BF362222FC52FB0005EAF8 /* ViewController.swift */; };
 		F1BF362622FC52FB0005EAF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1BF362422FC52FB0005EAF8 /* Main.storyboard */; };
@@ -21,8 +22,9 @@
 
 /* Begin PBXFileReference section */
 		F12274D722FDA9CC00173287 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
-		F12274D922FDABB700173287 /* UnplashImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnplashImages.swift; sourceTree = "<group>"; };
 		F12274DB22FDBE9B00173287 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		F13CAB4522FE338D00733142 /* UnsplashClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashClient.swift; sourceTree = "<group>"; };
+		F13CAB4722FEC3D300733142 /* UnsplashImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashImages.swift; sourceTree = "<group>"; };
 		F1BF361D22FC52FB0005EAF8 /* Do-Pinterest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Do-Pinterest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1BF362022FC52FB0005EAF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1BF362222FC52FB0005EAF8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -89,8 +91,9 @@
 			isa = PBXGroup;
 			children = (
 				F12274D722FDA9CC00173287 /* APIClient.swift */,
-				F12274D922FDABB700173287 /* UnplashImages.swift */,
 				F12274DB22FDBE9B00173287 /* Endpoint.swift */,
+				F13CAB4522FE338D00733142 /* UnsplashClient.swift */,
+				F13CAB4722FEC3D300733142 /* UnsplashImages.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -168,8 +171,9 @@
 			files = (
 				F12274DC22FDBE9B00173287 /* Endpoint.swift in Sources */,
 				F1BF363822FD7E2F0005EAF8 /* PinterestLayout.swift in Sources */,
-				F12274DA22FDABB700173287 /* UnplashImages.swift in Sources */,
 				F1BF362322FC52FB0005EAF8 /* ViewController.swift in Sources */,
+				F13CAB4822FEC3D300733142 /* UnsplashImages.swift in Sources */,
+				F13CAB4622FE338D00733142 /* UnsplashClient.swift in Sources */,
 				F1BF363622FD5B200005EAF8 /* PhotoCell.swift in Sources */,
 				F12274D822FDA9CC00173287 /* APIClient.swift in Sources */,
 				F1BF362122FC52FB0005EAF8 /* AppDelegate.swift in Sources */,

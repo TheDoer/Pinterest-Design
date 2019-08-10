@@ -1,8 +1,8 @@
 //
-//  UnplashImages.swift
+//  UnsplashImages.swift
 //  Do-Pinterest
 //
-//  Created by adonis rumbwere on 9/8/2019.
+//  Created by adonis rumbwere on 10/8/2019.
 //  Copyright © 2019 Adonis Rumbwere. All rights reserved.
 //
 
@@ -15,6 +15,10 @@ struct Photo: Codable {
     let urls: URLS
 }
 
-enum URLS: String,Codable {
-    case raw, full, regular, small, thumb
+struct URLS: Codable {
+    let raw: URL
+    let full: URL
+    let regular: URL
+    let small: URL
+    let thumb: URL
 }
