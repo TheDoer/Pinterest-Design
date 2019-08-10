@@ -3,7 +3,7 @@
 //  PinterestApplication
 //
 //  Created by Adonis Rumbwere on 12/6/19.
-//  Copyright © 2017 Gary Tokman. All rights reserved.
+//  Copyright © 2019 Adonis Rumbwere. All rights reserved.
 //
 
 import Foundation
