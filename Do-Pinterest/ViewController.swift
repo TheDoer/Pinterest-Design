@@ -17,7 +17,9 @@ class ViewController: UIViewController {
     
     //MARK: Properties
     
-    let images = [#imageLiteral(resourceName: "image-4"),#imageLiteral(resourceName: "image-2"),#imageLiteral(resourceName: "image-1"),#imageLiteral(resourceName: "image-3"),#imageLiteral(resourceName: "image-5"),#imageLiteral(resourceName: "image-6"),#imageLiteral(resourceName: "image-7"),#imageLiteral(resourceName: "image-8")]
+    let viewModel = ViewModel(client: UnsplashClient())
+    
+    //let images = [#imageLiteral(resourceName: "image-4"),#imageLiteral(resourceName: "image-2"),#imageLiteral(resourceName: "image-1"),#imageLiteral(resourceName: "image-3"),#imageLiteral(resourceName: "image-5"),#imageLiteral(resourceName: "image-6"),#imageLiteral(resourceName: "image-7"),#imageLiteral(resourceName: "image-8")]
     
     
     override func viewDidLoad() {
@@ -30,7 +32,31 @@ class ViewController: UIViewController {
         }
         collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         
+        //init view Model
         
+        //user self in a closure
+        
+        viewModel.showLoading = {
+            if self.viewModel.isLoading {
+                self.activityIndicator.startAnimating()
+                self.collectionView.alpha = 0.0
+            } else {
+                self.activityIndicator.stopAnimating()
+                self.collectionView.alpha = 1.0
+            }
+            
+        }
+        
+        viewModel.showError = { error in
+            print(error)
+            
+        }
+        
+        viewModel.reloadData = {
+            self.collectionView.reloadData()
+        }
+        
+        viewModel.fetchPhotos()
     }
 
 }
@@ -57,7 +83,7 @@ class ViewController: UIViewController {
 extension ViewController: PinterestLayoutDelegate{
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
         
-        let image = images[indexPath.item]
+        let image = viewModel.cellViewModels[indexPath.item].image
         let height = image.size.height
         
         return height
@@ -69,13 +95,13 @@ extension ViewController: PinterestLayoutDelegate{
 
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+        return viewModel.cellViewModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
         
-        let image = images[indexPath.item]
+        let image = viewModel.cellViewModels[indexPath.item].image
         cell.imageView.image = image
         
         return cell
